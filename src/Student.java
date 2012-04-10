@@ -1,53 +1,45 @@
 
 public class Student
 {
-    private String firstName;
-    private int testSum = 0, average;
-    private int Scores[] = new int[3];
+    private String name;
+    private int testSum = 0, average, id, score1, score2, score3;
+    Student[][] students;
 
-    public Student(String fName)
-    {
-        firstName = fName;
-        for (int i = 0; i < Scores.length; i++)
-        {
-            Scores[i] = 0;
-        }
+    public Student(String studName, int studID, int testScore1, int testScore2, int testScore3){
+        name=studName;
+        studID=id;
+        testScore1=score1;
+        testScore2=score2;
+        testScore3=score3;
     }
 
-    public void setTestScore(int testNumber, int testScore)
-    {
-        Scores[testNumber] = testScore;
+    public void setScore(int testNum, int testScore){
+        if(testNum==1)
+            score1=testScore;
+        else if(testNum==2)
+            score2=testScore;
+        else
+            score3=testScore;
     }
 
-    public int getTestScore(int testNumber)
-    {
-        return Scores[testNumber];
+    public int getScore(int testNum){
+        int score=0;
+        if (testNum==1)
+            score=score1;
+        else if (testNum==2)
+            score=score2;
+        else if (testNum==3)
+            score=score3;
+
+        return score;
     }
 
-    public int average()
-    {
-        for (int i = 0; i < Scores.length; i++)
-        {
-            testSum += Scores[i];
-        }
-        average = testSum / Scores.length;
+    public String toString(){
+        String print="";
 
-        return average;
-    }
+        print+="Name\tID\t1\t2\t3\n";
+        print+=name + "\t" + id + "\t" + score1 + "\t" + score2 + "\t" + score3 + "\n";
 
-    public String toString()
-    {
-        String result = firstName + "\n";
-
-        for (int score : Scores)
-        {
-            int i = 1;
-            result += "Test " + i + ": " + score + "\n";
-            i++;
-        }
-
-        result += "\nAverage Score: " + this.average();
-
-        return result;
+        return print;
     }
 }
