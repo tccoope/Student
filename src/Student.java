@@ -1,16 +1,16 @@
+import java.util.Scanner;
 
 public class Student
 {
     private String name;
     private int testSum = 0, average, id, score1, score2, score3;
-    Student[][] students;
 
-    public Student(String studName, int studID, int testScore1, int testScore2, int testScore3){
-        name=studName;
-        studID=id;
-        testScore1=score1;
-        testScore2=score2;
-        testScore3=score3;
+    public void readStudent(Scanner fileScan){
+        name=fileScan.next();
+        id=fileScan.nextInt();
+        score1=fileScan.nextInt();
+        score2=fileScan.nextInt();
+        score3=fileScan.nextInt();
     }
 
     public void setScore(int testNum, int testScore){
@@ -34,11 +34,15 @@ public class Student
         return score;
     }
 
+    public int average(){
+        average=(score1+score2+score3)/3;
+
+        return average;
+    }
     public String toString(){
         String print="";
 
-        print+="Name\tID\t1\t2\t3\n";
-        print+=name + "\t" + id + "\t" + score1 + "\t" + score2 + "\t" + score3 + "\n";
+        print+=name + "\t" + id + "\t" + score1 + "\t" + score2 + "\t" + score3;
 
         return print;
     }

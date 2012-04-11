@@ -5,19 +5,21 @@ public class StudentDriver
 {
     public static void main(String[] args) throws IOException
     {
-        Scanner file=new Scanner(new File("students"));
+        Student[] students;
+        students=new Student[5];
 
-        file.useDelimiter("\t");
+        Scanner file=new Scanner(new File("students.txt"));
 
-        String[] tmp=new String[5];
+        for (int i=0; i<5; i++){
+            students[i]= new Student();
+            students[i].readStudent(file);
+        }
 
-        Student[][] students=new Student[5][5];
-
-        for(int i=0;file.hasNext();i++)
-            tmp[i]=file.nextLine();
-
-        for(int row=0; row<students.length; row++)
-            for(int col=0; col<students[row].length; col++)
-                students[row][col]=tmp[row].toString().split("\t");
+        System.out.print("Name\tID\t1\t2\t3\tAverage\n");
+        for(Student student : students){
+            System.out.print(student + "\t");
+            System.out.print(student.average());
+            System.out.println();
+        }
     }
 }
